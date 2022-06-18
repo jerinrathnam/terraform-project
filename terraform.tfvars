@@ -1,0 +1,2 @@
+project = "terraform"
+name    = "jerin"
