@@ -1,6 +1,7 @@
 variable "aws_access_key" {
   type      = string
   sensitive = true
+  default = "AKIAV73OOXEA7RKZHDMR"
 
 }
 variable "naming_prefix" {
@@ -12,6 +13,7 @@ variable "naming_prefix" {
 variable "aws_secret_key" {
   type      = string
   sensitive = true
+  default = "oM+nkgmGEsX5nm8W6gvUcC32zObWSxhD18fqjkaG"
 
 }
 
