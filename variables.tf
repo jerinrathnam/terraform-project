@@ -3,6 +3,11 @@ variable "aws_access_key" {
   sensitive = true
 
 }
+variable "naming_prefix" {
+  type = string
+  default = "jerin"
+  
+}
 
 variable "aws_secret_key" {
   type      = string
@@ -27,10 +32,10 @@ variable "vpc_cidr_block" {
 
 }
 
-variable "vpc_subnets_cidr_block" {
-  type    = list(string)
-  default = ["10.0.0.0/24", "10.0.1.0/24"]
-
+variable "vpc_subnet_count" {
+  type = number
+  default = 2
+  
 }
 
 variable "map_public_ip_on_launch" {

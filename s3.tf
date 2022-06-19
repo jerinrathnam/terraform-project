@@ -52,17 +52,13 @@ resource "aws_s3_bucket" "web_bucket" {
 }
 
 resource "aws_s3_bucket_object" "object1" {
+  for_each = {
+    website = "/website/index.html"
+    photo = "/website/Polish_20220517_223858461.png"
+  }
   bucket = aws_s3_bucket.web_bucket.bucket
-  key    = "/website/index.html"
-  source = "./website/index.html"
-
-  tags = local.common_tags
-}
-
-resource "aws_s3_bucket_object" "object2" {
-  bucket = aws_s3_bucket.web_bucket.bucket
-  key    = "/website/Polish_20220517_223858461.png"
-  source = "./website/Polish_20220517_223858461.png"
+  key    = each.value
+  source = ".${each.value}"
 
   tags = local.common_tags
 }
