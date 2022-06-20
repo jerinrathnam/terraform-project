@@ -3,6 +3,7 @@ data "aws_elb_service_account" "root" {
 }
 
 resource "aws_lb" "nginx" {
+  name = "jerin"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
