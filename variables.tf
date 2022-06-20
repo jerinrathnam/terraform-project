@@ -1,18 +1,20 @@
-variable "aws_access_key" {
+/*variable "aws_access_key" {
   type      = string
   sensitive = true
 
 }
-variable "naming_prefix" {
-  type = string
-  default = "jerin"
-  
-}
-
 variable "aws_secret_key" {
   type      = string
   sensitive = true
 
+} */
+variable "naming_prefix" {
+  type    = string
+  default = "jerin"
+
+}
+variable "instance_count" {
+  type = map(number)
 }
 
 variable "aws_region" {
@@ -27,15 +29,13 @@ variable "enable_dns_hostnames" {
 }
 
 variable "vpc_cidr_block" {
-  type    = string
-  default = "10.0.0.0/16"
+  type = map(string)
 
 }
 
 variable "vpc_subnet_count" {
-  type = number
-  default = 2
-  
+  type = map(number)
+
 }
 
 variable "map_public_ip_on_launch" {
@@ -45,13 +45,11 @@ variable "map_public_ip_on_launch" {
 }
 
 variable "instance_type" {
-  type    = string
-  default = "t2.micro"
+  type = map(string)
 }
 
 variable "web_name" {
-  type    = string
-  default = "nginx"
+  type = string
 }
 
 variable "name" {

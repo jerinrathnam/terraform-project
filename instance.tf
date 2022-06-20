@@ -1,18 +1,18 @@
 resource "aws_instance" "nginx" {
-  count = var.vpc_subnet_count
-  ami                    = "ami-0b0ea68c435eb488d"
-  instance_type          = var.instance_type
-  subnet_id              = aws_subnet.subnets[(count.index % var.vpc_subnet_count)].id
+  count                  = var.instance_count[terraform.workspace]
+  ami                    = "ami-065efef2c739d613b"
+  instance_type          = var.instance_type[terraform.workspace]
+  subnet_id              = module.vpc.public_subnets[(count.index % var.vpc_subnet_count[terraform.workspace])]
   vpc_security_group_ids = [aws_security_group.nginx_sg.id]
-  user_data              = templatefile("${path.module}/template.tpl", {
-    s3_bucket_name = aws_s3_bucket.web_bucket.id
+  user_data = templatefile("${path.module}/template.tpl", {
+    s3_bucket_name = module.web_app_s3.web_bucket.id
   })
 
-  tags                 = merge(local.common_tags, {
-    Name = "${local.name_prefix}-web"
+  tags = merge(local.common_tags, {
+    Name = "${local.name_prefix}-web-${count.index}"
   })
   depends_on = [
-    aws_iam_role_policy.nginx_policy
+    module.web_app_s3
   ]
-  iam_instance_profile = aws_iam_instance_profile.nginx_profile.name
+  iam_instance_profile = module.web_app_s3.instance_profile.name
 }
