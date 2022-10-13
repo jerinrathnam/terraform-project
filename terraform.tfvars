@@ -1,4 +1,4 @@
-project  = "terraform"
+project  = "terrateam"
 name     = "jerin"
 web_name = "resume"
 
