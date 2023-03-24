@@ -1,4 +1,4 @@
-/*variable "aws_access_key" {
+variable "aws_access_key" {
   type      = string
   sensitive = true
 
@@ -7,7 +7,7 @@ variable "aws_secret_key" {
   type      = string
   sensitive = true
 
-} */
+} 
 variable "naming_prefix" {
   type    = string
   default = "jerin"
