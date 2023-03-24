@@ -34,7 +34,7 @@ variable "enable_dns_hostnames" {
 variable "vpc_cidr_block" {
   type = map(string)
   default = {
-    "Development" = "10.0.0.0/16
+    "Development" = "10.0.0.0/16"
     }
 }
 
