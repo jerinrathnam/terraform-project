@@ -42,7 +42,7 @@ variable "vpc_subnet_count" {
   type = map(number)
   default = {
     "Development" = 2
-
+  }
 }
 
 variable "map_public_ip_on_launch" {
